@@ -9,10 +9,16 @@ import { Item } from '../item';
 })
 export class ItemsListComponent implements OnInit {
 
+  newItemName: string;
   items = TODO_ITEMS;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  addItem() {
+    this.items.push(new Item(this.newItemName));
+    this.newItemName = '';
+  }
 }

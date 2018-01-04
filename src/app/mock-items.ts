@@ -1,3 +1,6 @@
 import { Item } from './item';
 
-export const TODO_ITEMS: Item[] = [{ name: 'Do this first' }, { name: 'Hello', description: 'World' }];
+export const TODO_ITEMS: Item[] = [
+  { name: 'My first todo' },
+  { name: 'Second Item', description: 'Do this today' }
+];

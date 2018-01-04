@@ -1,5 +1,15 @@
 <ul class="p0">
   <li *ngFor="let item of items" class="todo-item">
-    <span class="name">{{ item.name }}</span><span *ngIf="item.description">, <i class="description">{{ item.description }}</i></span>
+    <span class="name">{{ item.name | uppercase }}</span>
+    <span *ngIf="item.description" class="description">{{ item.description }}</span>
   </li>
 </ul>
+
+<form (ngSubmit)="addItem()">
+  <div class="input-group">
+     <input type="text" placeholder="Todo . . ." class="form-control" name="name" [(ngModel)]="newItemName">
+     <span class="input-group-btn">
+        <input type="submit" class="btn btn-default" value="Add to list">
+     </span>
+  </div>
+</form>
