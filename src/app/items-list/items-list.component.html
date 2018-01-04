@@ -1,5 +1,5 @@
-<ul>
-  <li *ngFor="let item of items">
-    {{ item.name }}<span *ngIf="item.description">, <i>{{ item.description }}</i></span>
+<ul class="p0">
+  <li *ngFor="let item of items" class="todo-item">
+    <span class="name">{{ item.name }}</span><span *ngIf="item.description">, <i class="description">{{ item.description }}</i></span>
   </li>
 </ul>

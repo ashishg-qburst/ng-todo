@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Arimo');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i');
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body {
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Nunito', sans-serif;
   margin: 2em;
+}
+
+body * {
+  font-family: 'Nunito', sans-serif;
+}
+
+.p0 {
+  padding: 0px !important;
 }
