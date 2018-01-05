@@ -9,6 +9,7 @@ import { Item } from '../item';
 })
 export class ItemsListComponent implements OnInit {
 
+  currentItem: Item;
   items = TODO_ITEMS;
   newItemName: string;
   @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
@@ -24,7 +25,7 @@ export class ItemsListComponent implements OnInit {
   }
 
   selectItem(item: Item) {
-    this.selectedItem.emit(item);
-    console.log(this.selectedItem);
+    this.currentItem = item;
+    this.selectedItem.emit(this.currentItem);
   }
 }

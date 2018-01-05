@@ -1,5 +1,5 @@
 <ul class="p0">
-  <li *ngFor="let item of items" (click)="selectItem(item)" class="todo-item">
+  <li *ngFor="let item of items" (click)="selectItem(item)" class="todo-item" [class.selected]="item === currentItem">
     <span class="name">{{ item.name | uppercase }}</span>
     <span *ngIf="item.description" class="description">{{ item.description }}</span>
   </li>
