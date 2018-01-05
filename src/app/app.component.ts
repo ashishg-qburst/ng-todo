@@ -13,4 +13,8 @@ export class AppComponent {
   setSelectedItem(item) {
     this.selectedItem = item;
   }
+
+  updateSelectedItemAfterItemRemoval(item) {
+    if(item === this.selectedItem) { this.selectedItem = null }
+  }
 }

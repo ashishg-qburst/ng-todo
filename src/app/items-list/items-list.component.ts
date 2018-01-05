@@ -13,6 +13,7 @@ export class ItemsListComponent implements OnInit {
   items = TODO_ITEMS;
   newItemName: string;
   @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
+  @Output() removedItem: EventEmitter<Item> = new EventEmitter<Item>();
 
   constructor() { }
 
@@ -22,6 +23,11 @@ export class ItemsListComponent implements OnInit {
   addItem() {
     this.items.push(new Item(this.newItemName));
     this.newItemName = '';
+  }
+
+  removeItem(index: number) {
+    this.removedItem.emit(this.items[index]);
+    this.items.splice(index, 1);
   }
 
   selectItem(item: Item) {

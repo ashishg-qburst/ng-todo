@@ -1,6 +1,7 @@
 <ul class="p0">
-  <li *ngFor="let item of items" (click)="selectItem(item)" class="todo-item" [class.selected]="item === currentItem">
+  <li *ngFor="let item of items; index as i" (click)="selectItem(item)" class="todo-item" [class.selected]="item === currentItem">
     <span class="name">{{ item.name | uppercase | slice:0:30 }}{{ showStringOverflow(item.name, 30) }}</span>
+    <div class="actions pull-right"><i (click)="removeItem(i)" class="fa fa-times" aria-hidden="true"></i></div>
   </li>
 </ul>
 

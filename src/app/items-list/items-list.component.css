@@ -12,6 +12,21 @@ ul {
   cursor: pointer;
 }
 
+.todo-item:not(.selected):hover {
+  background: #ddd;
+}
+
+.actions {
+  display: none;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 31px;
+}
+
+.todo-item:hover > .actions {
+  display: block;
+}
+
 .selected {
   color: #fff;
   background: #1976d2;
@@ -20,7 +35,6 @@ ul {
 .name {
   font-size: 22px;
   font-weight: 600;
-  max-width: 300px;
 }
 
 .description {
