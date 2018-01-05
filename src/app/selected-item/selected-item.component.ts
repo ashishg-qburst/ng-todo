@@ -12,4 +12,8 @@ export class SelectedItemComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  validateItemNameLength(item: Item) {
+    item.name = item.name.length < 1 ? 'Todo...' : item.name
+  }
 }

@@ -28,4 +28,8 @@ export class ItemsListComponent implements OnInit {
     this.currentItem = item;
     this.selectedItem.emit(this.currentItem);
   }
+
+  showStringOverflow(text: string, limit: number = 20) {
+    return text.length > limit ? '...' : ''
+  }
 }

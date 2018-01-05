@@ -1,11 +1,9 @@
-input, textarea {
-  border: none;
-  display: inline;
-  font-family: inherit;
-  font-size: inherit;
-  padding: none;
-  width: auto;
-  box-shadow: none;
+input, textarea, input:focus, textarea:focus {
+  border: none !important;
+  display: inline !important;
+  padding: none !important;
+  width: auto !important;
+  box-shadow: none !important;
   width: 100% !important;
 }
 

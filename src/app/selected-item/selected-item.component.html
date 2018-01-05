@@ -1,5 +1,5 @@
 <div *ngIf="item">
-  <input [(ngModel)]="item.name" name="name" class="name form-control" type="text" placeholder="Todo . . ." >
+  <input [(ngModel)]="item.name" (keyup)="validateItemNameLength(item)" name="name" class="name form-control text-uppercase" type="text">
 
   <textarea [(ngModel)]="item.description" class="description form-control" placeholder="Description..." rows="10"></textarea>
 </div>
