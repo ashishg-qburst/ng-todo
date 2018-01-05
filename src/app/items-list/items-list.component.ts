@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TODO_ITEMS } from '../mock-items';
 import { Item } from '../item';
 
@@ -9,8 +9,9 @@ import { Item } from '../item';
 })
 export class ItemsListComponent implements OnInit {
 
-  newItemName: string;
   items = TODO_ITEMS;
+  newItemName: string;
+  @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
 
   constructor() { }
 
@@ -20,5 +21,10 @@ export class ItemsListComponent implements OnInit {
   addItem() {
     this.items.push(new Item(this.newItemName));
     this.newItemName = '';
+  }
+
+  selectItem(item: Item) {
+    this.selectedItem.emit(item);
+    console.log(this.selectedItem);
   }
 }

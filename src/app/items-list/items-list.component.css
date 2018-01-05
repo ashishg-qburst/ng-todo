@@ -1,8 +1,20 @@
+ul {
+  list-style-type: none;
+}
+
 .todo-item {
-  background: #1976d2;
-  color: #fff;
+  color: #1976d2;
+  background: #fff;
+
   padding: 5px;
   margin-bottom: 2px;
+
+  cursor: pointer;
+}
+
+.selected {
+  color: #fff;
+  background: #1976d2;
 }
 
 .name {
@@ -12,8 +24,9 @@
 
 .description {
   font-size: 16px;
-  font-style: italic;
   font-weight: 400;
+  font-style: italic;
+
   margin-left: 10px;
 }
 
