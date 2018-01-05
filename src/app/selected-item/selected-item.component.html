@@ -1,1 +1,5 @@
-<input *ngIf="item" type="text" placeholder="Todo . . ." class="form-control" name="name" [(ngModel)]="item.name">
+<div *ngIf="item">
+  <input [(ngModel)]="item.name" name="name" class="name form-control" type="text" placeholder="Todo . . ." >
+
+  <textarea [(ngModel)]="item.description" class="description form-control" placeholder="Description..." rows="10"></textarea>
+</div>
