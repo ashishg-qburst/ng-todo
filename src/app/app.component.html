@@ -1,8 +1,12 @@
 <div class="container">
-  <div class="row"><div class="col-md-12"><h1>{{ title }}</h1></div></div>
+  <div class="row"><div class="col-md-12"><h1 [innerHTML]="title()"></h1></div></div>
   <div class="row">
     <div class="col-md-6">
-      <app-items-list (selectedItem)="setSelectedItem($event)" (removedItem)="updateSelectedItemAfterItemRemoval($event)"></app-items-list>
+      <app-items-list
+        (selectedItem)="setSelectedItem($event)"
+        (itemCountChange)="setItemCount($event)"
+        (removedItem)="updateSelectedItemAfterItemRemoval($event)">
+      </app-items-list>
     </div>
     <div class="col-md-6">
       <app-selected-item [item]="selectedItem"></app-selected-item>

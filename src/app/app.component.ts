@@ -7,8 +7,8 @@ import { Item } from './item';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ng Todo';
   selectedItem: Item;
+  itemCount: number;
 
   setSelectedItem(item) {
     this.selectedItem = item;
@@ -17,4 +17,8 @@ export class AppComponent {
   updateSelectedItemAfterItemRemoval(item) {
     if(item === this.selectedItem) { this.selectedItem = null }
   }
+
+  setItemCount = (count: number) => { this.itemCount = count }
+
+  title = () => { return this.itemCount < 1 ? 'N<small class="text-muted">othin</small>g Todo' : 'Ng Todo' }
 }

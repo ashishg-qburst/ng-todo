@@ -12,22 +12,26 @@ export class ItemsListComponent implements OnInit {
   currentItem: Item;
   items = TODO_ITEMS;
   newItemName: string;
-  @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
   @Output() removedItem: EventEmitter<Item> = new EventEmitter<Item>();
+  @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
+  @Output() itemCountChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+    this.itemCountChange.emit(this.items.length);
   }
 
   addItem() {
     this.items.push(new Item(this.newItemName));
+    this.itemCountChange.emit(this.items.length);
     this.newItemName = '';
   }
 
   removeItem(index: number) {
     this.removedItem.emit(this.items[index]);
     this.items.splice(index, 1);
+    this.itemCountChange.emit(this.items.length);
   }
 
   selectItem(item: Item) {
