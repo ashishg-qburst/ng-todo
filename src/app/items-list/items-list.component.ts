@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TODO_ITEMS } from '../mock-items';
+
 import { Item } from '../item';
+import { TodoService } from '../todo.service'
 
 @Component({
   selector: 'app-items-list',
@@ -10,33 +11,39 @@ import { Item } from '../item';
 export class ItemsListComponent implements OnInit {
 
   currentItem: Item;
-  items = TODO_ITEMS;
+  items: Item[];
   newItemName: string;
-  @Output() removedItem: EventEmitter<Item> = new EventEmitter<Item>();
-  @Output() selectedItem: EventEmitter<Item> = new EventEmitter<Item>();
-  @Output() itemCountChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.itemCountChange.emit(this.items.length);
+    this.getItems();
+  }
+
+  getItems() {
+    this.todoService.getItems().subscribe(items => {
+      this.items = items;
+      this.updateItemCount();
+    });
   }
 
   addItem() {
     this.items.push(new Item(this.newItemName));
-    this.itemCountChange.emit(this.items.length);
     this.newItemName = '';
+    this.updateItemCount();
   }
 
   removeItem(index: number) {
-    this.removedItem.emit(this.items[index]);
+    if(this.items[index] === this.currentItem) { this.todoService.setSelectedItem(null) }
     this.items.splice(index, 1);
-    this.itemCountChange.emit(this.items.length);
+    this.updateItemCount();
   }
+
+  updateItemCount = () => { this.todoService.setItemCount(this.items.length); }
 
   selectItem(item: Item) {
     this.currentItem = item;
-    this.selectedItem.emit(this.currentItem);
+    this.todoService.setSelectedItem(item);
   }
 
   showStringOverflow(text: string, limit: number = 20) {

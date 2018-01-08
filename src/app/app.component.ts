@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { Item } from './item';
+import { TodoService } from './todo.service'
 
 @Component({
   selector: 'app-root',
@@ -7,18 +9,16 @@ import { Item } from './item';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedItem: Item;
-  itemCount: number;
 
-  setSelectedItem(item) {
-    this.selectedItem = item;
+  title: string;
+
+  constructor(private todoService: TodoService) {}
+
+  ngOnInit() {
+    this.todoService.itemCount.subscribe(itemCount => this.setTitle(itemCount));
   }
 
-  updateSelectedItemAfterItemRemoval(item) {
-    if(item === this.selectedItem) { this.selectedItem = null }
+  setTitle(itemCount: number) {
+    this.title = itemCount < 1 ? 'N<small class="text-muted">othin</small>g Todo' : 'Ng Todo';
   }
-
-  setItemCount = (count: number) => { this.itemCount = count }
-
-  title = () => { return this.itemCount < 1 ? 'N<small class="text-muted">othin</small>g Todo' : 'Ng Todo' }
 }
