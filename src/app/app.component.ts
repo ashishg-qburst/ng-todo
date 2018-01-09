@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { Item } from './item';
 import { TodoService } from './todo.service'
+import { select } from '@angular-redux/store';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +13,12 @@ import { TodoService } from './todo.service'
 export class AppComponent {
 
   title: string;
+  @select(state => state.present.todos.length) itemCount: Observable<number>;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
-    this.todoService.itemCount.subscribe(itemCount => this.setTitle(itemCount));
+    this.itemCount.subscribe(itemCount => this.setTitle(itemCount));
   }
 
   setTitle(itemCount: number) {

@@ -15,9 +15,7 @@ export class SelectedItemComponent implements OnInit {
 
   constructor(private todoService: TodoService) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   validateItemNameLength(item: Item) {
     item.name = item.name.length < 1 ? 'Todo...' : item.name
