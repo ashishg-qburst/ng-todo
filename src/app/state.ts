@@ -1,6 +1,6 @@
 import { Item } from './item'
 
-export interface IAppState {
+export interface TodoAppState {
   todos: Item[],
   selectedItem: Item
 }

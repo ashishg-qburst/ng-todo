@@ -1,8 +1,8 @@
 import undoable, { distinctState } from 'redux-undo'
-import { IAppState } from './state'
+import { TodoAppState } from './state'
 import { Item } from './item'
 
-let initState: IAppState = { todos: [], selectedItem: null }
+let initState: TodoAppState = { todos: [], selectedItem: null }
 
 const todos = (state = initState, action) => {
   switch (action.type) {
