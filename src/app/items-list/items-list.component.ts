@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Item } from '../item';
 import { select } from '@angular-redux/store';
-import { TodoService } from '../todo.service'
+import { TodoService } from '../todo.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-items-list',
@@ -11,12 +12,17 @@ import { TodoService } from '../todo.service'
 })
 export class ItemsListComponent implements OnInit {
 
+  currentItem: Item;
   newItemName: string;
   @select(['present', 'todos']) items: Item[];
+  @select(['present', 'selectedItem']) currentItem$: Observable<Item>;
 
   constructor(private todoService: TodoService) { }
 
-  ngOnInit() { this.getItems(); }
+  ngOnInit() {
+    this.getItems();
+    this.currentItem$.subscribe(item => this.currentItem = item);
+  }
 
   getItems() {
     this.todoService.getItems().subscribe(items => {
