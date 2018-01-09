@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { dispatch } from '@angular-redux/store';
 
 import { Item } from '../item';
 import { TodoService } from '../todo.service'
@@ -20,6 +21,11 @@ export class ItemsListComponent implements OnInit {
     this.getItems();
   }
 
+  @dispatch()
+  updateState(action) {
+    return action;
+  }
+
   getItems() {
     this.todoService.getItems().subscribe(items => {
       this.items = items;
@@ -28,7 +34,9 @@ export class ItemsListComponent implements OnInit {
   }
 
   addItem() {
-    this.items.push(new Item(this.newItemName));
+    let newItem = new Item(this.newItemName)
+    this.updateState({ type: 'ADD_ITEM', item: newItem });
+    this.items.push(newItem);
     this.newItemName = '';
     this.updateItemCount();
   }
@@ -42,6 +50,7 @@ export class ItemsListComponent implements OnInit {
   updateItemCount = () => { this.todoService.setItemCount(this.items.length); }
 
   selectItem(item: Item) {
+    this.updateState({ type: 'SELECT_ITEM', item: item });
     this.currentItem = item;
     this.todoService.setSelectedItem(item);
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../item'
 import { TodoService } from '../todo.service'
+import { select } from '@angular-redux/store';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-selected-item',
@@ -9,12 +11,12 @@ import { TodoService } from '../todo.service'
 })
 export class SelectedItemComponent implements OnInit {
 
-  @Input() item: Item;
+  @select(['present', 'selectedItem']) item: Observable<Item>;
 
   constructor(private todoService: TodoService) {}
 
   ngOnInit() {
-    this.todoService.selectedItem.subscribe(item => this.item = item);
+
   }
 
   validateItemNameLength(item: Item) {
