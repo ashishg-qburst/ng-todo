@@ -36,10 +36,12 @@ export class TodoService {
 
   undo() {
     this.updateState(ActionCreators.undo());
+    this.updateState({ type: 'CLEAR_SELECTED_ITEM' });
   }
 
   redo() {
     this.updateState(ActionCreators.redo());
+    this.updateState({ type: 'CLEAR_SELECTED_ITEM' });
   }
 
   @dispatch()

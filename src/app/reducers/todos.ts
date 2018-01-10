@@ -1,19 +1,18 @@
-import undoable, { distinctState } from 'redux-undo'
+import undoable, { distinctState, includeAction, excludeAction  } from 'redux-undo'
 import { Item } from '../item'
 
-const todoReducer = (state: Item[] = [], action) => {
+const todoReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_ITEM':
-      return [...state, action.item];
+      return [...state, action.item]
     case 'ADD_ITEMS':
-      return [...state, ...action.items];
+      return [...state, ...action.items]
     case 'REMOVE_ITEM':
-      let removedItem = state.splice(action.index, 1)[0];
-      return state;
+      return state.filter((item, index) => index !== action.index)
     default:
-      return state;
+      return state
   }
 }
 
-export const todos = undoable(todoReducer);
+export const todos = undoable(todoReducer, { filter: excludeAction(['SELECT_ITEM', 'CLEAR_SELECTED_ITEM']) });
 

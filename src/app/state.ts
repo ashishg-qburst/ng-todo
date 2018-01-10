@@ -1,6 +1,8 @@
 import { Item } from './item'
 
 export interface TodoAppState {
-  todos: Item[],
+  todos: any,
   selectedItem: Item
 }
+
+export const initState: TodoAppState = { todos: {}, selectedItem: null }
