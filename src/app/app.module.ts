@@ -9,11 +9,11 @@ import { SelectedItemComponent } from './selected-item/selected-item.component';
 
 import { applyMiddleware, Store, combineReducers, compose, createStore } from 'redux';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
-import { undoableTodos } from './reducers'
+import { todoApp } from './reducers/index'
 import { TodoAppState } from './state'
 import logger from 'redux-logger'
 
-export const store: Store<TodoAppState> = createStore(undoableTodos, applyMiddleware(logger));
+export const store: Store<TodoAppState> = createStore(todoApp, applyMiddleware(logger));
 
 @NgModule({
   declarations: [

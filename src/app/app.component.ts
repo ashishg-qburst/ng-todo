@@ -13,9 +13,9 @@ import { select } from '@angular-redux/store';
 })
 export class AppComponent {
 
-  @select(state => state.past.length) pastCount: Observable<number>;
-  @select(state => state.future.length) futureCount: Observable<number>;
-  @select(state => state.present.todos.length) itemCount: Observable<number>;
+  @select(state => state.todos.past.length) pastCount: Observable<number>;
+  @select(state => state.todos.future.length) futureCount: Observable<number>;
+  @select(state => state.todos.present.length) itemCount: Observable<number>;
 
   constructor(private todoService: TodoService) {}
 

@@ -14,8 +14,8 @@ import { select } from '@angular-redux/store';
 export class ItemsListComponent implements OnInit {
 
   newItemName: string;
-  @select(['present', 'todos']) items: Item[];
-  @select(['present', 'selectedItem']) currentItem: Observable<Item>;
+  @select(['todos', 'present']) items: Item[];
+  @select('selectedItem') currentItem: Observable<Item>;
 
   constructor(private todoService: TodoService) { }
 

@@ -13,7 +13,7 @@ import { select } from '@angular-redux/store';
 })
 export class SelectedItemComponent implements OnInit {
 
-  @select(['present', 'selectedItem']) item: Observable<Item>;
+  @select('selectedItem') item: Observable<Item>;
 
   constructor(private todoService: TodoService) {}
 
