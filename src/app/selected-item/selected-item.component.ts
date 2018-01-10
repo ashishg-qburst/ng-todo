@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Item } from '../item'
 import { TodoService } from '../todo.service'
-import { select } from '@angular-redux/store';
+
 import { Observable } from 'rxjs/Observable';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'app-selected-item',

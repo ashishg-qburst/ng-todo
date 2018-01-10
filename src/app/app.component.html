@@ -1,5 +1,13 @@
 <div class="container">
-  <div class="row"><div class="col-md-12"><h1 [innerHTML]="getTitle(itemCount | async)"></h1></div></div>
+  <div class="row row-eq-height">
+    <div class="col-md-8"><h1 [innerHTML]="getTitle(itemCount | async)"></h1></div>
+    <div class="col-md-4 history-actions-container">
+      <div class="history-actions">
+        <button (click)="undoTodo()" class="action btn btn-default btn-sm" [disabled]="(pastCount | async) < 1"><i class="fa fa-backward" aria-hidden="true"></i></button>
+        <button (click)="redoTodo()" class="action btn btn-default btn-sm" [disabled]="(futureCount | async) < 1"><i class="fa fa-forward" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-6">
       <app-items-list></app-items-list>

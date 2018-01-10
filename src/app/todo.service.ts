@@ -9,6 +9,7 @@ import { Item } from './item';
 import { TODO_ITEMS } from './mock-items';
 
 import { dispatch } from '@angular-redux/store';
+import { ActionCreators } from 'redux-undo';
 
 @Injectable()
 export class TodoService {
@@ -31,6 +32,14 @@ export class TodoService {
 
   removeItemAtIndex(index: number) {
     this.updateState({ type: 'REMOVE_ITEM', index: index });
+  }
+
+  undo() {
+    this.updateState(ActionCreators.undo());
+  }
+
+  redo() {
+    this.updateState(ActionCreators.redo());
   }
 
   @dispatch()

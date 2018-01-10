@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Item } from '../item';
-import { select } from '@angular-redux/store';
 import { TodoService } from '../todo.service';
+
 import { Observable } from 'rxjs/Observable';
+import { select } from '@angular-redux/store';
 
 @Component({
   selector: 'app-items-list',
