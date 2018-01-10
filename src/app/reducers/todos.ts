@@ -1,7 +1,7 @@
 import undoable, { distinctState, includeAction, excludeAction  } from 'redux-undo'
 import { Item } from '../item'
 
-const todoReducer = (state = [], action) => {
+const todoReducer = (state: Item[] = [], action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       return [...state, action.item]
