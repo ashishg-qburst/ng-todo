@@ -22,8 +22,8 @@ export class TodoService {
     this.updateState({ type: 'SELECT_ITEM', item: item })
   }
 
-  addItems(items: Item[]) {
-    this.updateState({ type: 'ADD_ITEMS', items: items });
+  addItems(items: Item[], type: string = 'ADD_ITEMS') {
+    this.updateState({ type: type, items: items });
   }
 
   addItem(item: Item) {

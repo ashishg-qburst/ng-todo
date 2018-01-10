@@ -25,7 +25,7 @@ export class ItemsListComponent implements OnInit {
 
   getItems() {
     this.todoService.getItems().subscribe(items => {
-      this.todoService.addItems(items);
+      this.todoService.addItems(items, 'INIT_ITEMS');
     });
   }
 

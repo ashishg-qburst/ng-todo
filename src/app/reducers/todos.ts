@@ -7,6 +7,8 @@ const todoReducer = (state = [], action) => {
       return [...state, action.item]
     case 'ADD_ITEMS':
       return [...state, ...action.items]
+    case 'INIT_ITEMS':
+      return [...state, ...action.items]
     case 'REMOVE_ITEM':
       return state.filter((item, index) => index !== action.index)
     default:
@@ -14,5 +16,5 @@ const todoReducer = (state = [], action) => {
   }
 }
 
-export const todos = undoable(todoReducer, { filter: excludeAction(['SELECT_ITEM', 'CLEAR_SELECTED_ITEM']) });
+export const todos = undoable(todoReducer, { filter: excludeAction(['SELECT_ITEM', 'CLEAR_SELECTED_ITEM', 'INIT_ITEMS']) });
 
