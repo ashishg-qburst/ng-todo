@@ -12,16 +12,14 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ItemsListComponent implements OnInit {
 
-  currentItem: Item;
   newItemName: string;
   @select(['present', 'todos']) items: Item[];
-  @select(['present', 'selectedItem']) currentItem$: Observable<Item>;
+  @select(['present', 'selectedItem']) currentItem: Observable<Item>;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.getItems();
-    this.currentItem$.subscribe(item => this.currentItem = item);
   }
 
   getItems() {

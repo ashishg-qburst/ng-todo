@@ -12,16 +12,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent {
 
-  title: string;
   @select(state => state.present.todos.length) itemCount: Observable<number>;
 
   constructor(private todoService: TodoService) {}
 
-  ngOnInit() {
-    this.itemCount.subscribe(itemCount => this.setTitle(itemCount));
-  }
+  ngOnInit() {}
 
-  setTitle(itemCount: number) {
-    this.title = itemCount < 1 ? 'N<small class="text-muted">othin</small>g Todo' : 'Ng Todo';
+  getTitle(itemCount: number) {
+    return itemCount < 1 ? 'N<small class="text-muted">othin</small>g Todo' : 'Ng Todo';
   }
 }

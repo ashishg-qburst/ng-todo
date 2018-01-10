@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row"><div class="col-md-12"><h1 [innerHTML]="title"></h1></div></div>
+  <div class="row"><div class="col-md-12"><h1 [innerHTML]="getTitle(itemCount | async)"></h1></div></div>
   <div class="row">
     <div class="col-md-6">
       <app-items-list></app-items-list>

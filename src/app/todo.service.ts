@@ -13,19 +13,12 @@ import { dispatch } from '@angular-redux/store';
 @Injectable()
 export class TodoService {
 
-  selectedItem = new Subject<Item>();
-  itemCount = new BehaviorSubject<number>(0);
-
   constructor() {}
 
   getItems = (): Observable<Item[]> => { return of(TODO_ITEMS); }
 
   setSelectedItem(item: Item): void {
     this.updateState({ type: 'SELECT_ITEM', item: item })
-  }
-
-  setItemCount(count: number): void {
-    this.itemCount.next(count);
   }
 
   addItems(items: Item[]) {
