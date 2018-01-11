@@ -1,9 +1,9 @@
 import { Reducer, combineReducers } from 'redux'
 import { todos } from './todos'
 import { selectedItem } from './selectedItem'
-import { TodoAppState } from '../state'
+import { TodoAppState, initState } from '../state'
 
-const todoAppReducer = (state: TodoAppState, action) => {
+const todoAppReducer = (state: TodoAppState = initState, action) => {
   switch(action.type) {
     case 'REMOVE_ITEM':
       let removedItem = state.todos.present[action.index]
