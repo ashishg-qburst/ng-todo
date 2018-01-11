@@ -4,16 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TodoService } from './todo.service'
+import { StorageService } from './storage.service'
 import { ItemsListComponent } from './items-list/items-list.component';
 import { SelectedItemComponent } from './selected-item/selected-item.component';
 
-import { applyMiddleware, Store, combineReducers, compose, createStore } from 'redux';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
-import { todoApp } from './reducers/index'
 import { TodoAppState, initState } from './state'
-import logger from 'redux-logger'
 
-export const store: Store<TodoAppState> = createStore(todoApp, initState, applyMiddleware(logger));
+import { store } from './store'
 
 @NgModule({
   declarations: [
@@ -26,7 +24,7 @@ export const store: Store<TodoAppState> = createStore(todoApp, initState, applyM
     FormsModule,
     NgReduxModule
   ],
-  providers: [TodoService],
+  providers: [TodoService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

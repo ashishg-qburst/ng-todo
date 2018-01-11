@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Item } from '../item';
 import { TodoService } from '../todo.service';
+import { StorageService } from '../storage.service';
 
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
@@ -17,15 +18,15 @@ export class ItemsListComponent implements OnInit {
   @select(['todos', 'present']) items: Item[];
   @select('selectedItem') currentItem: Observable<Item>;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private storageService: StorageService) { }
 
   ngOnInit() {
     this.getItems();
   }
 
   getItems() {
-    this.todoService.getItems().subscribe(items => {
-      this.todoService.addItems(items, 'INIT_ITEMS');
+    this.storageService.getItems().subscribe(state => {
+      this.todoService.addItems(state.todos.present, 'INIT_ITEMS');
     });
   }
 

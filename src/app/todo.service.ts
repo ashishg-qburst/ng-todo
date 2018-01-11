@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 import { Item } from './item';
 import { TODO_ITEMS } from './mock-items';
 
@@ -15,8 +10,6 @@ import { ActionCreators } from 'redux-undo';
 export class TodoService {
 
   constructor() {}
-
-  getItems = (): Observable<Item[]> => { return of(TODO_ITEMS); }
 
   setSelectedItem(item: Item): void {
     this.updateState({ type: 'SELECT_ITEM', item: item })
